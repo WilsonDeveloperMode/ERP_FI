@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../theme/app_colors.dart';
+
 class BrandPanel extends StatelessWidget {
   const BrandPanel({super.key});
 
@@ -15,7 +17,7 @@ class BrandPanel extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFF5EDE3), Color(0xFFEEE1D0), Color(0xFFE5D1BD)],
+          colors: [Color(0xFFF6EFE7), Color(0xFFEFE4D6), Color(0xFFE5D4C2)],
         ),
       ),
       child: Column(
@@ -32,7 +34,7 @@ class BrandPanel extends StatelessWidget {
             child: Text(
               'Francis Interior ERP',
               style: theme.textTheme.labelLarge?.copyWith(
-                color: const Color(0xFF7A5D45),
+                color: AppColors.secondary,
               ),
             ),
           ),
@@ -47,7 +49,7 @@ class BrandPanel extends StatelessWidget {
             'Francis Interior',
             style: theme.textTheme.headlineLarge?.copyWith(
               fontSize: isCompact ? 40 : 52,
-              color: const Color(0xFF4A3426),
+              color: AppColors.ink,
             ),
             textAlign: TextAlign.center,
           ),
@@ -55,9 +57,17 @@ class BrandPanel extends StatelessWidget {
           Text(
             'Interior ERP',
             style: theme.textTheme.bodyLarge?.copyWith(
-              color: const Color(0xFF6E5948),
+              color: AppColors.textPrimary,
               letterSpacing: 1.6,
               fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 24),
+          Text(
+            'Designed for premium interior operations with one workflow from customer onboarding to installation.',
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: AppColors.textSecondary,
             ),
             textAlign: TextAlign.center,
           ),

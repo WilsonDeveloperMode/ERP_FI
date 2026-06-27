@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../features/dashboard/presentation/pages/dashboard_page.dart';
 import '../../../../shared/widgets/aura_circle.dart';
+import '../../../../theme/app_colors.dart';
 import '../widgets/brand_panel.dart';
 import '../widgets/login_card.dart';
 
@@ -67,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFFF8F2EA), Color(0xFFF3E9DE), Color(0xFFE7D8C9)],
+            colors: [AppColors.heroTop, AppColors.canvas, AppColors.glaze],
           ),
         ),
         child: Stack(
@@ -98,13 +99,10 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: BoxDecoration(
                         color: const Color(0xCCFFFDFC),
                         borderRadius: BorderRadius.circular(32),
-                        border: Border.all(
-                          color: const Color(0xFFD7C2AF),
-                          width: 1.2,
-                        ),
+                        border: Border.all(color: AppColors.border, width: 1.2),
                         boxShadow: const [
                           BoxShadow(
-                            color: Color(0x14000000),
+                            color: AppColors.shadow,
                             blurRadius: 30,
                             offset: Offset(0, 16),
                           ),
@@ -152,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
-        backgroundColor: const Color(0xFF7A3F35),
+        backgroundColor: AppColors.danger,
         content: Text(
           'Use admin as username and admin as password.',
           style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../theme/app_colors.dart';
 import '../../domain/models/customer.dart';
 
 class CustomerDetailCard extends StatelessWidget {
@@ -16,14 +17,14 @@ class CustomerDetailCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(28),
-        border: Border.all(color: const Color(0xFFE2D5C8)),
+        border: Border.all(color: AppColors.border),
       ),
       child: customer == null
           ? Center(
               child: Text(
                 'Select a customer to view details.',
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  color: const Color(0xFF8B7768),
+                  color: AppColors.textSecondary,
                 ),
               ),
             )
@@ -33,7 +34,7 @@ class CustomerDetailCard extends StatelessWidget {
                 Text(
                   'Customer details',
                   style: theme.textTheme.headlineMedium?.copyWith(
-                    color: const Color(0xFF4B3528),
+                    color: AppColors.ink,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -79,15 +80,13 @@ class _DetailRow extends StatelessWidget {
           Text(
             label,
             style: theme.textTheme.labelLarge?.copyWith(
-              color: const Color(0xFF9A8574),
+              color: AppColors.secondary,
             ),
           ),
           const SizedBox(height: 6),
           Text(
             value,
-            style: theme.textTheme.bodyLarge?.copyWith(
-              color: const Color(0xFF4B3528),
-            ),
+            style: theme.textTheme.bodyLarge?.copyWith(color: AppColors.ink),
           ),
         ],
       ),

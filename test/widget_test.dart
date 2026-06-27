@@ -23,7 +23,8 @@ void main() {
     await tester.tap(find.text('Login'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Dashboard'), findsOneWidget);
-    expect(find.text('Logged in locally as admin.'), findsOneWidget);
+    expect(find.text('Welcome back,'), findsOneWidget);
+    expect(find.text('Michelle'), findsOneWidget);
+    expect(find.text('Total Contracts'), findsOneWidget);
   });
 }

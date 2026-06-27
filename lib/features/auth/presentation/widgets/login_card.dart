@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../theme/app_colors.dart';
+
 class LoginCard extends StatelessWidget {
   const LoginCard({
     required this.emailController,
@@ -37,14 +39,14 @@ class LoginCard extends StatelessWidget {
             'Sign in',
             style: theme.textTheme.headlineMedium?.copyWith(
               fontSize: 40,
-              color: const Color(0xFF4B3528),
+              color: AppColors.ink,
             ),
           ),
           const SizedBox(height: 10),
           Text(
             'Access your workspace.',
             style: theme.textTheme.bodyLarge?.copyWith(
-              color: const Color(0xFF7A6557),
+              color: AppColors.textSecondary,
             ),
           ),
           const SizedBox(height: 28),
@@ -83,10 +85,10 @@ class LoginCard extends StatelessWidget {
                   checkboxTheme: CheckboxThemeData(
                     fillColor: WidgetStateProperty.resolveWith(
                       (states) => states.contains(WidgetState.selected)
-                          ? const Color(0xFFB19174)
+                          ? AppColors.primary
                           : Colors.transparent,
                     ),
-                    side: const BorderSide(color: Color(0xFFC9B29D)),
+                    side: const BorderSide(color: AppColors.border),
                   ),
                 ),
                 child: Checkbox(
@@ -101,7 +103,7 @@ class LoginCard extends StatelessWidget {
                 child: Text(
                   'Remember me',
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: const Color(0xFF6E5948),
+                    color: AppColors.textPrimary,
                   ),
                 ),
               ),
@@ -110,7 +112,7 @@ class LoginCard extends StatelessWidget {
                 child: Text(
                   'Forgot password?',
                   style: theme.textTheme.labelLarge?.copyWith(
-                    color: const Color(0xFF9A7858),
+                    color: AppColors.secondary,
                   ),
                 ),
               ),
@@ -122,12 +124,7 @@ class LoginCard extends StatelessWidget {
             child: FilledButton(
               onPressed: onLogin,
               style: FilledButton.styleFrom(
-                backgroundColor: const Color(0xFF4B3528),
-                foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18),
-                ),
               ),
               child: Text(
                 'Login',

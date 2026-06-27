@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../theme/app_colors.dart';
+
 class CustomerFormCard extends StatelessWidget {
   const CustomerFormCard({
     required this.formKey,
@@ -29,7 +31,7 @@ class CustomerFormCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(28),
-        border: Border.all(color: const Color(0xFFE2D5C8)),
+        border: Border.all(color: AppColors.border),
       ),
       child: Form(
         key: formKey,
@@ -39,14 +41,14 @@ class CustomerFormCard extends StatelessWidget {
             Text(
               'New customer registration',
               style: theme.textTheme.headlineMedium?.copyWith(
-                color: const Color(0xFF4B3528),
+                color: AppColors.ink,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               'Create and maintain customer data for upcoming contracts.',
               style: theme.textTheme.bodyLarge?.copyWith(
-                color: const Color(0xFF7A6557),
+                color: AppColors.textSecondary,
               ),
             ),
             const SizedBox(height: 24),
@@ -54,7 +56,7 @@ class CustomerFormCard extends StatelessWidget {
               controller: companyNameController,
               decoration: const InputDecoration(
                 labelText: 'Company name',
-                hintText: 'Francis Interior Ltd',
+                hintText: 'PT Francis Interior',
               ),
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
@@ -101,7 +103,7 @@ class CustomerFormCard extends StatelessWidget {
               keyboardType: TextInputType.phone,
               decoration: const InputDecoration(
                 labelText: 'Phone',
-                hintText: '+44 7000 000000',
+                hintText: '+62 812 0000 0000',
               ),
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
@@ -131,12 +133,7 @@ class CustomerFormCard extends StatelessWidget {
               child: FilledButton(
                 onPressed: onSubmit,
                 style: FilledButton.styleFrom(
-                  backgroundColor: const Color(0xFF4B3528),
-                  foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 18),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18),
-                  ),
                 ),
                 child: Text(
                   'Save customer',

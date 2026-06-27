@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../theme/app_colors.dart';
 import '../../domain/models/customer.dart';
 
 class CustomerListCard extends StatelessWidget {
@@ -25,7 +26,7 @@ class CustomerListCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(28),
-        border: Border.all(color: const Color(0xFFE2D5C8)),
+        border: Border.all(color: AppColors.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,14 +34,14 @@ class CustomerListCard extends StatelessWidget {
           Text(
             'Customer register',
             style: theme.textTheme.headlineMedium?.copyWith(
-              color: const Color(0xFF4B3528),
+              color: AppColors.ink,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             '${customers.length} customers available for sales contracts.',
             style: theme.textTheme.bodyLarge?.copyWith(
-              color: const Color(0xFF7A6557),
+              color: AppColors.textSecondary,
             ),
           ),
           const SizedBox(height: 20),
@@ -50,7 +51,7 @@ class CustomerListCard extends StatelessWidget {
                 child: Text(
                   'No customers yet.',
                   style: theme.textTheme.bodyLarge?.copyWith(
-                    color: const Color(0xFF8B7768),
+                    color: AppColors.textSecondary,
                   ),
                 ),
               ),
@@ -66,7 +67,7 @@ class CustomerListCard extends StatelessWidget {
 
                   return Material(
                     color: isSelected
-                        ? const Color(0xFFF4ECE3)
+                        ? AppColors.glaze
                         : const Color(0xFFFCFAF7),
                     borderRadius: BorderRadius.circular(20),
                     child: InkWell(
@@ -80,21 +81,21 @@ class CustomerListCard extends StatelessWidget {
                             Text(
                               customer.companyName,
                               style: theme.textTheme.titleMedium?.copyWith(
-                                color: const Color(0xFF4B3528),
+                                color: AppColors.ink,
                               ),
                             ),
                             const SizedBox(height: 6),
                             Text(
                               '${customer.contactPerson} • ${customer.phone}',
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                color: const Color(0xFF7A6557),
+                                color: AppColors.textPrimary,
                               ),
                             ),
                             const SizedBox(height: 4),
                             Text(
                               'Created ${dateFormat.format(customer.createdAt)}',
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                color: const Color(0xFF9A8574),
+                                color: AppColors.secondary,
                               ),
                             ),
                           ],
