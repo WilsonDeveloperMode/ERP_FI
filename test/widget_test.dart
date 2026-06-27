@@ -9,8 +9,9 @@ void main() {
   ) async {
     await tester.pumpWidget(const FrancisInteriorApp());
 
-    expect(find.text('Francis Interior ERP'), findsOneWidget);
-    expect(find.text('Sign in'), findsOneWidget);
+    expect(find.byType(Image), findsOneWidget);
+    expect(find.text('Username'), findsOneWidget);
+    expect(find.text('Password'), findsOneWidget);
     expect(find.text('Login'), findsOneWidget);
   });
 

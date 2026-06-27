@@ -7,9 +7,7 @@ class LoginCard extends StatelessWidget {
     required this.emailController,
     required this.passwordController,
     required this.obscurePassword,
-    required this.rememberMe,
     required this.onTogglePassword,
-    required this.onRememberMeChanged,
     required this.onLogin,
     super.key,
   });
@@ -17,9 +15,7 @@ class LoginCard extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final bool obscurePassword;
-  final bool rememberMe;
   final VoidCallback onTogglePassword;
-  final ValueChanged<bool?> onRememberMeChanged;
   final VoidCallback onLogin;
 
   @override
@@ -27,36 +23,35 @@ class LoginCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Container(
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.fromLTRB(32, 28, 32, 32),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(28),
+        color: Colors.white.withValues(alpha: 0.96),
+        borderRadius: BorderRadius.circular(30),
+        border: Border.all(color: AppColors.border),
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.shadow,
+            blurRadius: 32,
+            offset: Offset(0, 18),
+          ),
+        ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            'Sign in',
-            style: theme.textTheme.headlineMedium?.copyWith(
-              fontSize: 40,
-              color: AppColors.ink,
-            ),
+          Image.asset(
+            'assets/images/francis-interior-logo.png',
+            height: 120,
+            fit: BoxFit.contain,
           ),
-          const SizedBox(height: 10),
-          Text(
-            'Access your workspace.',
-            style: theme.textTheme.bodyLarge?.copyWith(
-              color: AppColors.textSecondary,
-            ),
-          ),
-          const SizedBox(height: 28),
+          const SizedBox(height: 24),
           TextField(
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
-              labelText: 'Email',
-              hintText: 'Enter your email',
-              prefixIcon: Icon(Icons.mail_outline_rounded),
+              labelText: 'Username',
+              hintText: 'Enter your username',
+              prefixIcon: Icon(Icons.person_outline_rounded),
             ),
           ),
           const SizedBox(height: 18),
@@ -65,7 +60,7 @@ class LoginCard extends StatelessWidget {
             obscureText: obscurePassword,
             decoration: InputDecoration(
               labelText: 'Password',
-              hintText: 'Enter password',
+              hintText: 'Enter your password',
               prefixIcon: const Icon(Icons.lock_outline_rounded),
               suffixIcon: IconButton(
                 onPressed: onTogglePassword,
@@ -77,48 +72,7 @@ class LoginCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 14),
-          Row(
-            children: [
-              Theme(
-                data: theme.copyWith(
-                  checkboxTheme: CheckboxThemeData(
-                    fillColor: WidgetStateProperty.resolveWith(
-                      (states) => states.contains(WidgetState.selected)
-                          ? AppColors.primary
-                          : Colors.transparent,
-                    ),
-                    side: const BorderSide(color: AppColors.border),
-                  ),
-                ),
-                child: Checkbox(
-                  value: rememberMe,
-                  onChanged: onRememberMeChanged,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Text(
-                  'Remember me',
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Forgot password?',
-                  style: theme.textTheme.labelLarge?.copyWith(
-                    color: AppColors.secondary,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 24),
           SizedBox(
             width: double.infinity,
             child: FilledButton(
