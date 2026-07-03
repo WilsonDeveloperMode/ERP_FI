@@ -19,7 +19,7 @@ class DashboardOverviewPage extends StatelessWidget {
         children: [
           const ErpTopHeader(
             title: 'Welcome back,',
-            emphasis: 'Michelle',
+            emphasis: 'Name',
             actionLabel: 'New Contract',
           ),
           const SizedBox(height: 20),
