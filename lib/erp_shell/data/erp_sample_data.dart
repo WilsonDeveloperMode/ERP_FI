@@ -104,12 +104,7 @@ const paymentRows = <PaymentRow>[
   PaymentRow('Stage 3', '01 Jul 2026', 'Rp 375,000,000', 'Pending'),
 ];
 
-const customerRows = <CustomerRow>[
-  CustomerRow('CUS-001', 'PT Nirwana Kharisma', 'Michelle', 'Active'),
-  CustomerRow('CUS-002', 'PT Golden Land', 'Kevin', 'Prospect'),
-  CustomerRow('CUS-003', 'PT Sentosa Abadi', 'Tanty', 'Active'),
-  CustomerRow('CUS-004', 'PT Jaya Makmur', 'Rendy', 'Onboarding'),
-];
+const customerRows = <CustomerRow>[];
 
 const contractDetailEntries = <KeyValueEntry>[
   KeyValueEntry('Contract No.', 'FI-2026-001'),

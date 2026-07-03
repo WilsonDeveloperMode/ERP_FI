@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:erp_fi/contracts/pages/contract_workspace_page.dart';
-import 'package:erp_fi/customers/pages/customer_workspace_page.dart';
+import 'package:erp_fi/customers/pages/customer_page.dart';
 import 'package:erp_fi/erp_shell/data/erp_sample_data.dart';
 import 'package:erp_fi/erp_shell/pages/placeholder_workspace_page.dart';
 import 'package:erp_fi/erp_shell/widgets/erp_sidebar.dart';
@@ -22,6 +22,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     final selectedItem = erpMenuItems[_selectedIndex];
+    final showCenteredSectionTitle = selectedItem.id == 'customer';
 
     return Scaffold(
       backgroundColor: AppColors.canvas,
@@ -35,29 +36,37 @@ class _DashboardPageState extends State<DashboardPage> {
         ),
       ),
       appBar: AppBar(
+        centerTitle: showCenteredSectionTitle,
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(Icons.menu_rounded),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Francis Interior ERP',
-              style: Theme.of(
-                context,
-              ).textTheme.titleMedium?.copyWith(color: Colors.white),
-            ),
-            Text(
-              selectedItem.label,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.white.withValues(alpha: 0.72),
+        title: showCenteredSectionTitle
+            ? Text(
+                selectedItem.label,
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(color: Colors.white),
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Francis Interior ERP',
+                    style: Theme.of(
+                      context,
+                    ).textTheme.titleMedium?.copyWith(color: Colors.white),
+                  ),
+                  Text(
+                    selectedItem.label,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Colors.white.withValues(alpha: 0.72),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -92,7 +101,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget _buildBody(String sectionId) {
     return switch (sectionId) {
       'dashboard' => const DashboardOverviewPage(),
-      'customer' => const CustomerWorkspacePage(),
+      'customer' => const CustomerPage(),
       'contract' => const ContractWorkspacePage(),
       'payment' => const PaymentWorkspacePage(),
       'commission' => const PlaceholderWorkspacePage(

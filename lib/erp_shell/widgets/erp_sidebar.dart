@@ -40,28 +40,14 @@ class ErpSidebar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-            decoration: BoxDecoration(
-              color: AppColors.sidebarOverlay.withValues(alpha: 0.72),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Row(
-              children: [
-                Image.asset(
-                  'assets/images/francis-interior-logo.png',
-                  height: 42,
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    'Francis\nInterior',
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: Image.asset(
+                'assets/images/francis-interior-logo.png',
+                height: 76,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           const SizedBox(height: 24),

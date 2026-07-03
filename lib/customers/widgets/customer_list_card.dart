@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
 import 'package:erp_fi/customers/models/customer.dart';
 import 'package:erp_fi/theme/app_colors.dart';
 
@@ -9,17 +7,18 @@ class CustomerListCard extends StatelessWidget {
     required this.customers,
     required this.onSelected,
     required this.selectedCustomerId,
+    this.searchBar,
     super.key,
   });
 
   final List<Customer> customers;
   final ValueChanged<Customer> onSelected;
   final String? selectedCustomerId;
+  final Widget? searchBar;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final dateFormat = DateFormat('dd MMM yyyy');
 
     return Container(
       padding: const EdgeInsets.all(28),
@@ -39,12 +38,16 @@ class CustomerListCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '${customers.length} customers available for sales contracts.',
+            '${customers.length} customers available for contracts and payment staging.',
             style: theme.textTheme.bodyLarge?.copyWith(
               color: AppColors.textSecondary,
             ),
           ),
           const SizedBox(height: 20),
+          if (searchBar != null) ...[
+            searchBar!,
+            const SizedBox(height: 18),
+          ],
           if (customers.isEmpty)
             Expanded(
               child: Center(
@@ -78,22 +81,30 @@ class CustomerListCard extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              customer.companyName,
-                              style: theme.textTheme.titleMedium?.copyWith(
-                                color: AppColors.ink,
-                              ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    customer.fullName,
+                                    style: theme.textTheme.titleMedium
+                                        ?.copyWith(
+                                          color: AppColors.ink,
+                                        ),
+                                  ),
+                                ),
+                                _StatusChip(status: customer.status),
+                              ],
                             ),
                             const SizedBox(height: 6),
                             Text(
-                              '${customer.contactPerson} • ${customer.phone}',
+                              customer.contactNumber,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 color: AppColors.textPrimary,
                               ),
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Created ${dateFormat.format(customer.createdAt)}',
+                              customer.primaryAddress,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 color: AppColors.secondary,
                               ),
@@ -107,6 +118,38 @@ class CustomerListCard extends StatelessWidget {
               ),
             ),
         ],
+      ),
+    );
+  }
+}
+
+class _StatusChip extends StatelessWidget {
+  const _StatusChip({required this.status});
+
+  final String status;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    final color = switch (status) {
+      'Active' => AppColors.success,
+      'Lead' => AppColors.warning,
+      _ => AppColors.textSecondary,
+    };
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text(
+        status,
+        style: theme.textTheme.labelLarge?.copyWith(
+          color: color,
+          fontSize: 12,
+        ),
       ),
     );
   }
