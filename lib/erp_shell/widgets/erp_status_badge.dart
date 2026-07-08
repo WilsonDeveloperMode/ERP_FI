@@ -14,7 +14,9 @@ class ErpStatusBadge extends StatelessWidget {
       'Paid' => AppColors.success,
       'Completed' => AppColors.success,
       'Pending' => AppColors.warning,
+      'Pending Approval' => AppColors.warning,
       'Prospect' => AppColors.warning,
+      'Draft' => AppColors.secondary,
       'Onboarding' => AppColors.secondary,
       _ => AppColors.secondary,
     };

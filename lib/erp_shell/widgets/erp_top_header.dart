@@ -5,12 +5,14 @@ class ErpTopHeader extends StatelessWidget {
     required this.title,
     required this.emphasis,
     required this.actionLabel,
+    this.onActionPressed,
     super.key,
   });
 
   final String title;
   final String emphasis;
   final String actionLabel;
+  final VoidCallback? onActionPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class ErpTopHeader extends StatelessWidget {
           ),
         ),
         if (MediaQuery.sizeOf(context).width >= 760)
-          FilledButton(onPressed: () {}, child: Text(actionLabel)),
+          FilledButton(onPressed: onActionPressed, child: Text(actionLabel)),
       ],
     );
   }
